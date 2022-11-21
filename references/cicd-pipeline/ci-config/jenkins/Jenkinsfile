@@ -5,18 +5,18 @@ pipeline {
 
     parameters {
             string(name: 'API_VERSION_P', defaultValue: 'google')
-            string(name: 'APIGEE_ORG_P', defaultValue: 'my-org')
-            string(name: 'APIGEE_TEST_ENV_P', defaultValue: 'test1')
+            string(name: 'APIGEE_ORG_P', defaultValue: 'validate')
+            string(name: 'APIGEE_TEST_ENV_P', defaultValue: 'test')
             string(name: 'APIGEE_PROD_ENV_P', defaultValue: '')
-            string(name: 'TEST_HOST_P', defaultValue: 'api.example.com')
+            string(name: 'TEST_HOST_P', defaultValue: '34.131.144.184.nip.io')
             string(name: 'WORK_DIR_P', defaultValue: 'references/cicd-pipeline')
             choice(name: 'GCP_SA_AUTH_P', choices: [ "vm-scope", "jenkins-scope", "token" ], description: 'GCP SA/Token Scope'  )
 
-            string(name: 'APIGEE_USER_P', defaultValue: 'not-used')
+            string(name: 'APIGEE_USER_P', defaultValue: 'opdk@google.com')
             string(name: 'APIGEE_PASS_P', defaultValue: 'not-used')
             string(name: 'APIGEE_TOKEN_P', defaultValue: '')
 
-            string(name: 'GIT_BRANCH_P', defaultValue: 'nightly')
+            string(name: 'GIT_BRANCH_P', defaultValue: 'main')
             string(name: 'AUTHOR_EMAIL_P', defaultValue: 'cicd@apigee.google.com')
 
     }
