@@ -163,6 +163,7 @@ pipeline {
             sh """
               mvn clean install \
                 -Papigeeapi \
+                -Dhosturl=http://34.131.144.184:8080 \
                 -Dpassword="${APIGEE_CREDS_PSW}" \
                 -Denv="${env.APIGEE_ENV}" \
                 -Dusername="${APIGEE_CREDS_USR}" \
