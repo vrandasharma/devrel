@@ -176,7 +176,7 @@ pipeline {
 
         stage('Functional Test') {
           steps { dir( "${env.WORK_DIR}" ) {
-            sh "TEST_HOST=${env.TEST_HOST} node ./node_modules/.bin/cucumber-js ./target/test/integration --format json:./target/reports.json"
+            sh "API_PROTOCOL=http TEST_HOST_PORT=59001 node ./node_modules/.bin/cucumber-js ./target/test/integration --format json:./target/reports.json"
           } }
         }
     }
