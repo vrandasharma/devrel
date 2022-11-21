@@ -65,8 +65,8 @@ limitations under the License.
 			<properties>
 				<apigee.plugin.version>1.3.3</apigee.plugin.version>
 				<apigee.config-plugin.version>1.5.3</apigee.config-plugin.version>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-				<apigee.authtype>oauth</apigee.authtype>
+				<apigee.hosturl>${hosturl}</apigee.hosturl>
+				<apigee.authtype>basic</apigee.authtype>
 				<apigee.username>${username}</apigee.username>
 				<apigee.password>${password}</apigee.password>
 			</properties>
@@ -115,7 +115,7 @@ limitations under the License.
 									<directory>${project.root.dir}</directory>
 									<filtering>true</filtering>
 									<includes>
-										<include>apiproxy/**</include>
+										<include>apiproxy_2/**</include>
 										<include>sharedflowbundle/**</include>
 										<include>test/integration/**</include>
 										<include>resources/**</include>
@@ -144,8 +144,8 @@ limitations under the License.
 					<basedir>${target.root.dir}</basedir>
 					<includes>
 						<include>test/integration/support/init.js</include>
-						<include>apiproxy/airports-cicd-v1.xml</include>
-						<include>apiproxy/proxies/default.xml</include>
+						<include>apiproxy_2/mock.xml</include>
+						<include>apiproxy_2/proxies/default.xml</include>
 					</includes>
 					<replacements>
 						<replacement>
