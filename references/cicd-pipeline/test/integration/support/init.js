@@ -24,12 +24,11 @@ const { Before, setDefaultTimeout } = require("@cucumber/cucumber");
 setDefaultTimeout(5 * 1000); // this is in ms
 
 Before(function () {
-  const host = process.env.TEST_HOST || "org-env.apigee.net";
-  const basePath = `/airports-cicd${process.env.APIGEE_DEPLOYMENT_SUFFIX || ''}/v1`;
-  const baseUri = `${host}${basePath}`;
+  const host = process.env.TEST_HOST || "34.131.144.184.nip.io";
+  const basePath = `/test`;
+  const baseUri = `${host}:59001${basePath}`;
   console.log(`Test Base URI: ${baseUri}`);
-  this.apickli = new apickliModule.Apickli("https", baseUri);
+  this.apickli = new apickliModule.Apickli("http", baseUri);
   this.apickli.addRequestHeader("Cache-Control", "no-cache");
+  this.apickli.addRequestHeader("Authorization", "Basic YWRtaW46c2VjcmV0");
 });
-
-

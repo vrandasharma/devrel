@@ -1,26 +1,27 @@
-Feature: List of Airports
+Feature: MockTarget API all endpoints
   As an API consumer
-  I want to list all popular airports
-  So that I can make better informed travel decisions.
+  I want to list all apis paths for MockTarget
+  So that I can ensure the api is working.
 
-  Scenario: I should be able to list all airports
-    When I GET /airports
+  Scenario: I should be Authenticate into the mock
+    When I GET /auth
     Then response code should be 200
-    And response body path $ should be of type array with length 50
 
-  Scenario: I should be able to limit the number of returned airports
-    When I GET /airports?limit=42
+  Scenario: I should be able to get JSON response
+    When I GET /json
     Then response code should be 200
-    And response body path $ should be of type array with length 42
+    And response body path $.firstName should be John
+    And response body path $.lastName should be Doe
 
-  Scenario: I should find all airports for a given country filter
-    When I GET /airports?country=india
+  Scenario: I should be able to get XML response
+    When I GET /xml
     Then response code should be 200
-    And response body path $ should be of type array with length 2
-    And response body path $.[0].iata should be DEL
-    And response body path $.[1].iata should be BOM
 
-  Scenario: I should be given an empty array for a non existing country name
-    When I GET /airports?country=utopia
+  Scenario: I should find all key=value in body
+    When I GET /echo?key=value
     Then response code should be 200
-    And response body path $ should be of type array with length 0
+    And response body path $.url should be /?key=value
+
+  Scenario: I should be able to get ip address from mock
+    When I GET /ip
+    Then response code should be 200
