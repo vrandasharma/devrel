@@ -157,7 +157,7 @@ pipeline {
 
         stage('Functional Test') {
           steps { dir( "${env.WORK_DIR}" ) {
-            sh "API_PROTOCOL=http TEST_HOST_PORT=59001 node ./node_modules/.bin/cucumber-js ./test/integration --format json:./test/reports.json"
+            sh "TEST_HOST=34.131.144.184.nip.io API_PROTOCOL=http TEST_HOST_PORT=59001 node ./node_modules/.bin/cucumber-js ./test/integration --format json:./test/reports.json"
           } }
         }
     }
