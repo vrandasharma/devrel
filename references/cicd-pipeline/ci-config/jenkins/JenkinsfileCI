@@ -166,7 +166,7 @@ pipeline {
       always { dir( "${env.WORK_DIR}" ) {
         cucumber reportTitle: 'Apickli test report',
               fileIncludePattern: '**/reports.json',
-              jsonReportDirectory: "target",
+              jsonReportDirectory: "test",
               sortingMethod: 'ALPHABETICAL',
               trendsLimit: 10
       } }
