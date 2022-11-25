@@ -95,52 +95,6 @@ pipeline {
           } }
         }
 
-        stage('Static Code Analysis') {
-          steps { dir( "${env.WORK_DIR}" ) {
-            sh "./node_modules/eslint/bin/eslint.js --format html . > eslint-out.html"
-
-            publishHTML(target: [
-              allowMissing: false,
-              alwaysLinkToLastBuild: false,
-              keepAll: false,
-              reportDir: ".",
-              reportFiles: 'eslint-out.html',
-              reportName: 'ESLint Report'
-            ]);
-
-            sh "rm eslint-out.html"
-
-            sh "npm run apigeelint > apigeelint-out.html"
-
-            publishHTML(target: [
-              allowMissing: false,
-              alwaysLinkToLastBuild: false,
-              keepAll: false,
-              reportDir: ".",
-              reportFiles: 'apigeelint-out.html',
-              reportName: 'Apigeelint Report'
-            ]);
-
-            sh "rm apigeelint-out.html"
-          }        }
-        }
-
-        stage('Unit Test') {
-          steps { dir( "${env.WORK_DIR}" ) {
-
-            sh "./node_modules/nyc/bin/nyc.js --reporter=html --reporter=text ./node_modules/mocha/bin/_mocha --timeout 5000 --recursive ./test/unit"
-
-            publishHTML(target: [
-              allowMissing: false,
-              alwaysLinkToLastBuild: false,
-              keepAll: false,
-              reportDir: "coverage",
-              reportFiles: 'index.html',
-              reportName: 'Unit Test Report'
-            ])
-          } }
-        }
-
         stage('Commit Author Extraction') {
           steps {
             script {
